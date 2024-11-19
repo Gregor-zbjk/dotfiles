@@ -123,7 +123,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then # if yes
 
 # Config of brews:
 ## coreutils
-echo "PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"" > ~/.zshrc
+echo "PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"" >> ~/.zshrc
 
 ## Hombrew Apps (Cask)
     brew install --cask visual-studio-code angry-ip-scanner cyberduck wireshark cheatsheet SF-symbols appcleaner coconutbattery blender ghidra remote-desktop-manager temurin zenmap amazon-q vmware-fusion 
