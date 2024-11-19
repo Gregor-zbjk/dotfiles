@@ -121,6 +121,10 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then # if yes
       # alias ll='exa -l --icons --no-user --group-directories-first  --time-style long-iso'
       # alias la='exa -la --icons --no-user --group-directories-first  --time-style long-iso'
 
+# Config of brews:
+## coreutils
+echo "PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"" > ~/.zshrc
+
 ## Hombrew Apps (Cask)
     brew install --cask visual-studio-code angry-ip-scanner cyberduck wireshark cheatsheet SF-symbols appcleaner coconutbattery blender ghidra remote-desktop-manager temurin zenmap amazon-q vmware-fusion 
     # visual-studio-code = Code Editor
