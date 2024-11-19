@@ -93,7 +93,8 @@ brew upgrade
 # Homebrew
 ## Homebrew Apps (bottles)
 if [ "$answer" != "${answer#[Yy]}" ] ;then # if yes
-    brew install git ffmpeg youtube-dl midnight-commander tree Archy neofetch trash htop OCRmyPDF tesseract tesseract-lang imagemagick git gh rename nmap qemu tldr bat eza
+    brew install coreutils git ffmpeg youtube-dl midnight-commander tree Archy neofetch trash htop OCRmyPDF tesseract tesseract-lang imagemagick git gh rename nmap qemu tldr bat eza
+    # coreutils = newer version of "Basic" utils that come with macOS
     # git = 
     # ffmpeg = great open-source decoder & converter for audio, just a good CLI audio tool
     # youtube-dl = youtube-downloader
