@@ -1,9 +1,11 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # Copyright (c) 2021-2024 Gregor Zobjak
 # Author: Gregor-zbjk (Gregor Zobjak)
 # License: ---
 # https://.../
+
+BREW_PREFIX=$(brew --prefix)
 
 # ADD FORMATTERS
 
