@@ -1,0 +1,87 @@
+#!/usr/bin/env sh
+set -e
+
+# get the OS type
+OS="$(uname -s)"
+
+# Because Git submodule commands cannot operate without a work tree, they must
+# be run from within $HOME (assuming this is the root of your dotfiles)
+cd "$HOME"
+
+install_macos() {
+    echo "➡️ macOS Setup"
+
+    sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
+    sed -e 's/^#auth/auth/' /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
+
+    # homebrew
+    if ! command -v /opt/homebrew/bin/brew &> /dev/null
+    then
+        echo 'brew must be installed! (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")'
+    else
+        echo "Homebrew already installed. Getting updates..."
+        /opt/homebrew/bin/brew update
+        /opt/homebrew/bin/brew doctor
+    fi
+
+    brew install \
+        bat \
+        cmatrix \
+        duf \
+        eza \
+        fzf \
+        jq \
+        nmap \
+        yq \
+        zoxide \
+        font-hack-nerd-font
+
+    brew install --cask \
+        discord \
+        github \
+        remote-desktop-manager \
+        warp
+}
+
+install_ubuntu() {
+    echo "➡️ Ubuntu Setup"
+
+    sudo apt update
+    sudo apt install -y \
+        bat cmatrix duf fzf jq nmap yq zoxide
+}
+
+install_arch() {
+    echo "➡️ Arch Setup"
+
+    sudo pacman -Syu --noconfirm \
+        bat cmatrix duf eza fzf jq nmap yq zoxide
+}
+
+echo "Bootstrapping complete"
+
+# call the right function based on the OS
+case "$OS" in
+    Darwin)
+        install_macos
+        ;;
+    Linux)
+        . /etc/os-release
+        case "$ID" in
+            ubuntu)
+                install_ubuntu
+                ;;
+            arch)
+                install_arch
+                ;;
+            *)
+                echo "❌ Unsupported Linux distro: $ID"
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        echo "❌ Unsupported OS: $OS"
+        exit 1
+        ;;
+esac
