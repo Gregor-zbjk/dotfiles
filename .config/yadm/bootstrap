@@ -14,6 +14,11 @@ install_macos() {
     sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
     sed -e 's/^#auth/auth/' /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
 
+    # Setting up Settings
+    defaults write com.apple.dock showAppExposeGestureEnabled -bool true && killall Dock # Three finger swipe down for app expose
+    defaults write com.apple.HIToolbox AppleFnUsageType -int 2 # Use fn as emoji key; restart/log out for changes to take effect
+    # HINZUFÜGEN: Keyboard Backlight auto off after 5 minutes of inactivity, Safari auto download Readinglist, Safari Developer tools
+
     # homebrew
     if ! command -v /opt/homebrew/bin/brew &> /dev/null
     then
@@ -24,23 +29,93 @@ install_macos() {
         /opt/homebrew/bin/brew doctor
     fi
 
+    # Homebrew Formulaes
+        # gping: ping with a graph
+        # sl: joke if you mistype ls
+        # jdupes: fdupes but faster + better
+        # colordiff: like diff but with colors
+        # duf: better du
+        # fzf: fuzzy finder
+        # micro: better nano
     brew install \
         bat \
+        colordiff \
         cmatrix \
         duf \
         eza \
+        fastfetch \
+        font-hack-nerd-font \
+        font-sf-mono-nerd-font-ligaturized \
         fzf \
+        gping \
+        jdupes \
         jq \
         nmap \
-        yq \
+        mas \
+        micro \
+        starship \
+        tmux \
+        tldr \
+        sl \
+        watch \
+        yadm \
         zoxide \
-        font-hack-nerd-font
+        yq \
+        zsh-autosuggestions \
+        zsh-completions \
+        zsh-syntax-highlighting
+        
+    # diff-so-fancy?
+    # https://github.com/phiresky/ripgrep-all
+    # https://github.com/BurntSushi/ripgrep
+    # https://github.com/nivekuil/rip
 
+    echo "✅ Homebrew packages installed"
+    
+    # CASKS
     brew install --cask \
+        affinity \
+        airbuddy \
+        aldente \
+        appcleaner \
         discord \
         github \
+        iina \
+        keka \
+        keycastr \
+        libreoffice \
+        libreoffice-language-pack \
+        numi \
+        microsoft-edge \
+        macs-fan-control \
+        obsidian \
+        postman \
+        shottr \
         remote-desktop-manager \
-        warp
+        visual-studio-code \
+        warp \
+        wireshark-app
+
+    echo "✅ Homebrew cask applications installed"
+
+    # MAS / App Store Apps
+    # please first open the App Store 
+    mas install 361309726 # Pages
+    mas install 361304891 # Numbers
+    mas install 361285480 # Keynote
+    mas install 1438243180 # Dark Reader 
+    mas install 1472432422 # Wayback Machine
+    mas install 310633997 # Whatsapp
+    mas install 1571283503 # RedirectWeb
+    mas install 6720708363 # Obsidian Web Clipper
+    mas install 1463298887 # Userscripts
+    mas install 1160374471 # pipifer
+    mas install 6460587883 # Postman Interceptor
+    mas install 6446215341 # Cookie Editor
+    mas install 937984704 # Amphetamine
+    mas install 6504861501 # Ghostery Adblocker
+    mas install 545519333 # Amazon Prime
+    mas install 747648890 # Telegram
 }
 
 install_ubuntu() {
