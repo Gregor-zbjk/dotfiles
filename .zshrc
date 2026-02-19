@@ -23,6 +23,8 @@ fi
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
 [[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
 [[ -f ~/.zsh/starship.zsh ]] && source ~/.zsh/starship.zsh
+[[ -f ~/.zsh/auto-completions.zsh ]] && source ~/.zsh/auto-completions.zsh
+
 
 # Tool completions
 (( $+commands[kubectl] )) && source <(kubectl completion zsh)
