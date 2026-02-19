@@ -5,6 +5,7 @@ alias ocat='cat'
 alias ls='eza --icons=always --group-directories-first'
 alias ll='eza -l --icons=always --no-user --group-directories-first  --time-style long-iso'
 alias la='eza -la --icons=always --no-user --group-directories-first  --time-style long-iso'
+alias tree='eza --tree --icons=always --group-directories-first'
 
 # kubectl
 alias k='kubectl'
@@ -13,6 +14,7 @@ alias k="kubectl"
 alias kc="kubectx"
 alias kn="kubens"
 alias h="helm"
+
 # man
 alias tman='tldr'
 
@@ -39,4 +41,6 @@ alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 # Random
 alias fsize='du -hs'
 alias dsize='du -h -d 1'
+alias du='duf'
+alias odu='du'
 # alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,deps} -i --color'
