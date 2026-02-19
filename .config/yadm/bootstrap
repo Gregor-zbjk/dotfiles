@@ -117,6 +117,8 @@ install_macos() {
     mas install 6504861501 # Ghostery Adblocker
     mas install 545519333 # Amazon Prime
     mas install 747648890 # Telegram
+
+    post_install
 }
 
 install_ubuntu() {
@@ -132,6 +134,16 @@ install_arch() {
 
     sudo pacman -Syu --noconfirm \
         bat cmatrix duf eza fzf jq nmap yq zoxide
+}
+
+post_install() {
+    echo "➡️ Post-installation steps"
+    echo "Setting permissions for zsh-autocomplete"
+        chmod go-w '/usr/local/share'
+        chmod -R go-w '/usr/local/share/zsh'
+    
+    # TODO: Reload zsh config or ask user to do so
+    echo "Post-installation steps complete"
 }
 
 echo "Bootstrapping complete"
