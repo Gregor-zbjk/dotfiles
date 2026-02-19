@@ -1,3 +1,7 @@
+# Zsh-autocomplete
+[[ -f /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]] && \
+    source /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 # Zsh automatic completion setup
 autoload -Uz compinit
 
@@ -28,7 +32,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 eval "$(starship init zsh)"
 
 # Zsh plugins
-[[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
