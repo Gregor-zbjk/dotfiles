@@ -1,18 +1,21 @@
-# Zsh-autocomplete
-[[ -f /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]] && \
+# Zsh Completions
+# Versuch zsh-autocomplete zu laden
+if [[ -f /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]]; then
+    # zsh-autocomplete
     source /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-# Zsh automatic completion setup
-autoload -Uz compinit
-
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-fi
-
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.m-1) ]]; then
-  compinit -C
 else
-  compinit
+    # Fallback: classic compinit
+    autoload -Uz compinit
+
+    if type brew &>/dev/null; then
+        FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    fi
+
+    if [[ -f ${ZDOTDIR:-$HOME}/.zcompdump ]]; then
+        compinit -C
+    else
+        compinit
+    fi
 fi
 
 # Source custom zsh files
